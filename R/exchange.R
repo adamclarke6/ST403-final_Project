@@ -1,3 +1,4 @@
+#test
 library(quantmod)
 
 #function to load in forex data
@@ -7,19 +8,19 @@ end_date <- Sys.Date()
 rates_df <- NULL
 for (idx in seq(length(rates_list))){
   rate_index = rates_list[idx]
-  getFX(rate_index, 
+  getFX(rate_index,
         from=start_date,to=end_date)
   temp_df = as.data.frame(get(gsub("/","",rate_index)))
   temp_df$Date = row.names(temp_df)
   temp_df$Index = rate_index
   row.names(temp_df) = NULL
   colnames(temp_df) = c("rate","Date","Index")
-  
+
   rates_df = rbind(rates_df, temp_df)
   return(rates_df)
 }
 }
-#saving forex data 
+#saving forex data
 rates_df<-load_fx()
 #function to get exchange rates
 exchange <- function(base,foreign,date=Sys.Date()-1){
