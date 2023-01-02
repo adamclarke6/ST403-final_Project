@@ -97,5 +97,3 @@ convertDist <- function(x,startUnit,endUnit){
     warning("endUnit is not valid")
   }
 }
-
-convertDist(82,"feet","cm")
