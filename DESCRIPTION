@@ -2,9 +2,9 @@ Package: ST403FinalProject
 Type: Package
 Title: Package that provides functions for different types of conversions.
 Version: 0.1.0
-Authors@R: c(person("Stephanie", "Deegan", email="stephanie.deegan.2020@mumail.ie", role="aut",
-  person("Keelan", "Foley", email="keelan.foley.2020@mumail.ie", role=c("aut","cre"),
-  person("Adam", "Clarke", email="adam.clarke.2020@mumail.ie", role="aut")
+Authors@R: c(person("Stephanie", "Deegan", email="stephanie.deegan.2020@mumail.ie", role="aut"),
+  person("Keelan", "Foley", email="keelan.foley.2020@mumail.ie", role=c("aut","cre")),
+  person("Adam", "Clarke", email="adam.clarke.2020@mumail.ie", role="aut"))
 Description: Allows for conversions between different units. 
     You provide the number to convert, the starting unit to be converted from and 
     the ending unit that you want to convert to. The functions then takes care of the details.
@@ -16,3 +16,7 @@ Depends: R (>= 4.1.0)
 URL: https://github.com/kfoley-01/ST403-final_Project
 Encoding: UTF-8
 LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
