@@ -9,7 +9,7 @@ Description: Allows for conversions between different units.
     You provide the number to convert, the starting unit to be converted from and 
     the ending unit that you want to convert to. The functions then takes care of the details.
     There is a function for converting between different units of distance and a fucntion to
-    converrt between differnt currencies.
+    convert between differnt currencies.
     Use four spaces when indenting paragraphs within the Description.
 License: GPL (>=2)
 Depends: R (>= 4.1.0)
