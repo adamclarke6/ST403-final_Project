@@ -1,5 +1,5 @@
 ---
-title: "my_vignette"
+title: "ST403 Final Project"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{my_vignette}
@@ -17,3 +17,35 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(ST403FinalProject)
 ```
+
+  #Exchange
+
+The exchange family of methods in this package aim to return exchange rates for given currencies and plot these exchange rates. 
+
+ 1.  Below is an example where USD is converted to GBP.
+
+```{r}
+100*exchange_rate("USD","GBP")
+100*exchange_rate("USD","GBP","2022-11-01")
+```
+  We see here at the time of writing 100$ equates to roughly 82.91£ but on the first of November was 86.93£. Note the date format yyyy-mm-dd and also be aware the data is only available for last 180 days.
+  
+  2.  If looking to see overall trend between two currencies we can use *exchange_plot*
+  
+```{r,fig.width=5.5,fig.height=4}
+exchange_plot("USD","GBP")
+```
+  
+   The lines indicate the min,median and max for the given exchange rate. The current exchange rate is also given in the title
+  
+  3.
+To access this data in the form of a data frame to do your own analysis use function *load_fx*
+
+```{r}
+df1<-load_fx(rates_list = c("EUR/USD","EUR/GBP","EUR/AUD","EUR/NZD"))
+df1<-df1[order(df1$Date,df1$rate,df1$Index,decreasing = T),]
+head(df1,n=8)
+```
+
+
+  
