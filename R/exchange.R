@@ -1,12 +1,3 @@
-#' Title
-#'
-#' @param rates_list
-#'
-#' @return
-#' @export
-#'
-#' @examples
-
 #test
 library(quantmod)
 
