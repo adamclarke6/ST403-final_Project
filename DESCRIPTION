@@ -1,6 +1,6 @@
 Package: ST403FinalProject
 Type: Package
-Title: Package that provides functions for different types of conversions.
+Title: Package that provides functions for different types of conversions
 Version: 0.1.0
 Authors@R: c(person("Stephanie", "Deegan", email="stephanie.deegan.2020@mumail.ie", role="aut"),
   person("Keelan", "Foley", email="keelan.foley.2020@mumail.ie", role=c("aut","cre")),
@@ -10,7 +10,6 @@ Description: Allows for conversions between different units.
     the ending unit that you want to convert to. The functions then takes care of the details.
     There is a function for converting between different units of distance and a fucntion to
     convert between differnt currencies.
-    Use four spaces when indenting paragraphs within the Description.
 License: GPL (>=2)
 RoxygenNote: 7.2.3
 Imports: 

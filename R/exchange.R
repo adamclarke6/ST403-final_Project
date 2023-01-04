@@ -20,8 +20,17 @@ load_fx<- function(rates_list=c("EUR/USD","EUR/GBP","EUR/AUD")){
   for (idx in seq(length(rates_list))){
     rate_index = rates_list[idx]
 
-    quantmod::getFX(rate_index,
-          from=start_date,to=end_date)
+
+    tryCatch(
+      {
+      quantmod::getFX(rate_index,
+                      from=start_date,to=end_date)
+        },
+      warning=function(cond){
+        stop(paste("The follwing abbreviation does not exist ",rate_index," check standard forex currency abbreviations online"))
+      }
+    )
+
         temp_df = as.data.frame(get(gsub("/","",rate_index)))
         temp_df$Date = row.names(temp_df)
         temp_df$Index = rate_index
