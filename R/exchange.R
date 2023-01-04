@@ -81,7 +81,7 @@ exchange_rate <- function(base,foreign,date=Sys.Date()-1){
 #'
 #' @importFrom graphics "abline" "legend" "points"
 #' @importFrom stats "median"
-#' @importFrom grDevices "adjustcolor
+#' @importFrom grDevices "adjustcolor"
 #'
 #' @return nothing just displays a plot
 #' @export

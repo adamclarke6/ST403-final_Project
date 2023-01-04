@@ -8,13 +8,13 @@
 #' @param startUnit the starting unit that needs to be converted
 #' @param endUnit the unit that the data has to be converted to
 #'
-#' @return
+#' @return x converted from startUnit to endUnit
 #' @export
 #'
-#'@import ST403-final_Project
+#'
 #'
 #' @examples
-#' convertDist(100,"cm","ft)
+#' convertDist(100,"cm","ft")
 #'
 #' convertDist(212,"meter","yards")
 #'

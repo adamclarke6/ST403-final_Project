@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(ST403FinalProject)
 ```
 
-  #Exchange
+## Exchange {.tabset}
 
 The exchange family of methods in this package aim to return exchange rates for given currencies and plot these exchange rates. 
 
@@ -47,5 +47,10 @@ df1<-df1[order(df1$Date,df1$rate,df1$Index,decreasing = T),]
 head(df1,n=8)
 ```
 
+##ConvertDist {.tabset}
+
+```{r}
+convertDist(100,"cm","m")
+```
 
   
