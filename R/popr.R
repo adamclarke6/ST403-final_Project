@@ -1,13 +1,20 @@
-################################## load data function
-
+#' Load in historical population data from Kaggle
+#'
+#' Loads in population data for countries from 8 years between 1970 and 2022
+#'
+#' @return A dataframe that includes population data for every country, for all 8 years.
+#' It also includes geometry details about each of the countries.
+#'
+#' @export
+#'
+#' @importFrom readr "read_csv"
+#' @importFrom rnaturalearth "ne_countries"
+#'
+#' @examples
+#' load_popr()
+#'
 load_popr <- function()
 {
-
-library(readr)
-library(sf)
-library(rnaturalearth)
-library(rnaturalearthdata)
-
 
 world_population <- read_csv("https://raw.githubusercontent.com/adamclarke6/data/main/world_population.csv")
 
@@ -37,10 +44,29 @@ return(popr)
 
 
 
-
-################################################# fit function
-
-
+#' Fit model to population data
+#'
+#' Fits a model that uses user imputed continents, and years to create a
+#' dataframe and parameters for what needs to be plotted in plot_popr
+#'
+#' @param continent The area of the world that will be plotted
+#' @param year1 The initial year that the user wants to see the population
+#' difference for
+#' @param year2 The final year that the user wants to see the population
+#' difference for
+#' @param popr The dataframe outputed from load_popr()
+#'
+#' @return A list that includes a dataframe of what needs to be plotted
+#' along with the xlim and ylim for the plot
+#'
+#' @export
+#'
+#' @examples
+#' load_popr()
+#' model1 <- fit_popr("World", "2022", "1970")
+#' model2 <- fit_popr("Africa", "2015", "1990")
+#' model3 <- fit_popr("Europe", "2010", "2000")
+#'
 fit_popr <- function(continent = "World", year1, year2, popr = load_popr())
 {
   if(continent == "World")
@@ -206,15 +232,33 @@ fit_popr <- function(continent = "World", year1, year2, popr = load_popr())
 
 
 
-############################################### plot function
 
 
 
 
+#' Plot the popr output
+#'
+#' Plots the users desired continent/s with the differences in populations
+#' between the chosen years. This is accompanied with a nice colour scale
+#'
+#' @param model The list outputted by fit_popr()
+#'
+#' @return A nice plot of the desired continent/s, with a nice colour scale.
+#' @export
+#'
+#' @importFrom grDevices "colorRampPalette" "as.raster"
+#' @importFrom graphics "text" "rasterImage"
+#'
+#' @examples
+#' load_popr()
+#' model1 <- fit_popr("World", "2022", "1970")
+#' model2 <- fit_popr("Africa", "2015", "1990")
+#' model3 <- fit_popr("Europe", "2010", "2000")
+#' plot_popr(model1)
+#' plot_popr(model2)
+#' plot_popr(model3)
 plot_popr <- function(model = model)
 {
-
-
 
 map <- model$map
 xlim <- model$xlim
@@ -244,7 +288,7 @@ text(x = 1.5, y = round(seq(from = min(pop_diff), to = max(pop_diff), length.out
               labels = round(seq(from = min(pop_diff), to = max(pop_diff), length.out = 10), -5))
 
 axis(4, at = round(seq(from = min(pop_diff), to = max(pop_diff), length.out = 10), -5),
-                   pos = 0.9, labels = F, col = 0, col.ticks = 1, tck = -.1)
+                   pos = 0.85, labels = F, col = 0, col.ticks = 1, tck = -.1)
 
 rasterImage(legend_image, 0, min(pop_diff), 1, max(pop_diff))
 
@@ -256,43 +300,3 @@ rasterImage(legend_image, 0, min(pop_diff), 1, max(pop_diff))
 load_popr()
 model <- fit_popr("Africa", "2022", "1970")
 plot_popr(model)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-usethis::git_sitrep()
-
-
-
-library(devtools)
-library(knitr)
-library(pkgbuild)
-library(roxygen2)
-library(testthat)
-
-
-has_devel()
-check_build_tools()
-
-devtools::build()
-
-
-
-
-
