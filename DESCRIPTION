@@ -6,10 +6,15 @@ Authors@R: c(person("Stephanie", "Deegan", email="stephanie.deegan.2020@mumail.i
   person("Keelan", "Foley", email="keelan.foley.2020@mumail.ie", role=c("aut","cre")),
   person("Adam", "Clarke", email="adam.clarke.2020@mumail.ie", role="aut"))
 Description: Allows for conversions between different units. 
-    You provide the number to convert, the starting unit to be converted from and 
-    the ending unit that you want to convert to. The functions then takes care of the details.
-    There is a function for converting between different units of distance and a fucntion to
-    convert between differnt currencies.
+    There is a function for converting between different units of distance and a function to
+    convert between different currencies.
+    For the convertDist function provide the number to convert, the starting unit to be 
+    converted from and the ending unit that you want to convert to. 
+    The function then takes care of the details.
+    There is a function that loads in population data for countries from 8 years 
+    between 1970 and 2022. A further fucntion fits a model that uses user imputed 
+    continents, and years to create a dataframe and parameters for what needs 
+    to be plotted in plot_popr.
 License: GPL (>=2)
 RoxygenNote: 7.2.3
 Imports: 
