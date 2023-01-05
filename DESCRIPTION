@@ -17,6 +17,7 @@ Imports:
     quantmod,
     readr,
     rnaturalearth,
+    rnaturalearthdata,
     graphics
 Suggests: 
     knitr,
