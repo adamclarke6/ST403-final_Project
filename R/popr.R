@@ -9,6 +9,7 @@
 #'
 #' @importFrom readr "read_csv"
 #' @importFrom rnaturalearth "ne_countries"
+#' @import rnaturalearthdata
 #'
 #' @examples
 #' load_popr()

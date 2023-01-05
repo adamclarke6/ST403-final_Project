@@ -14,6 +14,17 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  fig.width = 7,
+  fig.height = 5,
+  fig.align = "center",
+  message = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
 ```{r setup}
 library(ST403FinalProject)
 ```
@@ -70,7 +81,7 @@ dat
 A dedicated `fit_popr()` method is provided for objects returned by `load_popr()`. This function will fit the model indicated by the `continent` argument to data at the intervals specified by the `year1` and `year2` arguments. In the example below, a  model is fit to the continent of Africa data for years 2022 and 2020. 
 
 ```{r}
-model1 <- fit_popr("Afrcia", "2022", "2020", popr = dat)
+model1 <- fit_popr("Africa", "2022", "2020", popr = dat)
 ```
 
 Here, the model is created to show the differences in populations in African countries between the years 2022 and 2020.
@@ -78,11 +89,15 @@ Here, the model is created to show the differences in populations in African cou
 To instead fit a model to show the differences in populations in European countries between the years 2000 and 1970, the function could have been applied as follows:
 
 ```{r, eval=FALSE}
-model1 <- fit_popr("Europe", "2000", "1970", popr = dat)
+model2 <- fit_popr("Europe", "2000", "1970", popr = dat)
 ```
 
 ## `plot_popr()`
 
 The `plot_popr()` method provided simply plots the output of the fitted model. Taking `model1` from above, a plot can be created simply by typing `plot_popr(model1)`.
 
+```{r, echo=FALSE}
+plot_popr(model1)
+```
 
+The output of the plot function - a nice plot.
