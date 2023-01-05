@@ -1,0 +1,88 @@
+---
+title: "popr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{popr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ST403FinalProject)
+```
+
+## Introduction
+
+__ST403FinalProject__ is an R package which downloads the latest population data for all the countries in the world. It includes data from 2022, 2020, 2015, 2010, 2000, 1990, 1980 and 1970. It also includes geometry data on each of these countries. It performs basic modelling of said data, and creates nice plots of population differences over time. Three functions are provided:
+
+  1. `load_popr()`: for loading in the data in a tidy format,
+  
+  2. a `fit_popr()` method: for fitting statistical models to said data,
+  
+  3. and a `plot_popr()` method for producing nice visualisations.
+  
+Typically, these functions are applied sequentially. This vignette aims to demonstrate a typical workflow of the `ST403FinalProject` package.
+
+
+### Installation
+
+__ST403FinalProject__ will run in Windows, Mac OS X, or Linux. To install it you first need to install [R](https://cran.r-project.org/). Installing [RStudio](https://www.rstudio.com/) as a nice desktop environment for using R is also recommended.
+
+Once in R you can type at the R command prompt:
+
+```{r, eval=FALSE}
+install.packages('devtools')
+devtools::install_github('kfoley-01/ST403-final_Project')
+```
+
+to install the latest development version of the package from the __ST403FinalProject__ [GitHub page](https://github.com/kfoley-01/ST403-final_Project). 
+
+In either case, if you then type:
+
+```{r, eval=FALSE}
+library(ST403FinalProject)
+```
+
+it will load in all the aforementioned __ST403FinalProject__ functions.
+
+Some features may not yet be fully tested, and occasionally this version might be liable to break when it is in the process of being updated. If you find bugs or want to suggest new features please visit the [GitHub issues page](https://github.com/kfoley-01/ST403-final_Project/issues).
+
+
+## `load_popr()`
+
+This function loads in population data from for countries at different intervals.  The output will contain the a dataframe of the popultions and the geometry data. In the example below, data is returned in a tidy format.
+
+```{r}
+dat <- load_popr()
+dat
+```
+
+
+## `fit_popr()`
+
+A dedicated `fit_popr()` method is provided for objects returned by `load_popr()`. This function will fit the model indicated by the `continent` argument to data at the intervals specified by the `year1` and `year2` arguments. In the example below, a  model is fit to the continent of Africa data for years 2022 and 2020. 
+
+```{r}
+model1 <- fit_popr("Afrcia", "2022", "2020", popr = dat)
+```
+
+Here, the model is created to show the differences in populations in African countries between the years 2022 and 2020.
+
+To instead fit a model to show the differences in populations in European countries between the years 2000 and 1970, the function could have been applied as follows:
+
+```{r, eval=FALSE}
+model1 <- fit_popr("Europe", "2000", "1970", popr = dat)
+```
+
+## `plot_popr()`
+
+The `plot_popr()` method provided simply plots the output of the fitted model. Taking `model1` from above, a plot can be created simply by typing `plot_popr(model1)`.
+
+
