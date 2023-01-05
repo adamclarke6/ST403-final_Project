@@ -225,7 +225,8 @@ fit_popr <- function(continent = "World", year1, year2, popr = load_popr())
   }
 
 
-  output <- list("map" = map, "xlim" = xlim, "ylim" = ylim)
+  output <- list("map" = map, "xlim" = xlim, "ylim" = ylim,
+                 "year1" = year1, "year2" = year2)
 
   return(output)
 }
@@ -273,7 +274,7 @@ map$Col <- col_pal(20)[as.numeric(cut(pop_diff, breaks = 20))]
 layout(t(1:2), widths = c(3,1))
 
 plot(x = map$geometry, col = map$Col,
-     main = paste("Population difference"),
+     main = paste("Population differences between", model$year1, "and", model$year2),
      xlim = xlim, ylim = ylim)
 
 legend_image <- as.raster(matrix(col_pal(20), ncol=1))
@@ -297,6 +298,6 @@ rasterImage(legend_image, 0, min(pop_diff), 1, max(pop_diff))
 
 
 
-load_popr()
-model <- fit_popr("Africa", "2022", "1970")
-plot_popr(model)
+
+
+

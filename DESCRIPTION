@@ -14,7 +14,10 @@ License: GPL (>=2)
 RoxygenNote: 7.2.3
 Imports: 
     grDevices,
-    quantmod
+    quantmod,
+    readr,
+    rnaturalearth,
+    graphics
 Suggests: 
     knitr,
     rmarkdown,
