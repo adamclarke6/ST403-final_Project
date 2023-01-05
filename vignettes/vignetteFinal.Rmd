@@ -29,7 +29,7 @@ knitr::opts_chunk$set(
 library(ST403FinalProject)
 ```
 
-## Introduction
+## Introduction 
 
 __ST403FinalProject__ is an R package which downloads the latest population data for all the countries in the world. It includes data from 2022, 2020, 2015, 2010, 2000, 1990, 1980 and 1970. It also includes geometry data on each of these countries. It performs basic modelling of said data, and creates nice plots of population differences over time. Three functions are provided:
 
@@ -39,10 +39,23 @@ __ST403FinalProject__ is an R package which downloads the latest population data
   
   3. and a `plot_popr()` method for producing nice visualisations.
   
-Typically, these functions are applied sequentially. This vignette aims to demonstrate a typical workflow of the `ST403FinalProject` package.
+Typically, these functions are applied sequentially. 
+  
+This package also allows for conversions between different units. 
+There is a function for converting between different units of distance and a function to
+convert between different currencies.
+   4. `convertDist()`: for converting between different units of distance
+   
+   5. `load_fx()`: function to load in Forex data
+   
+   6. `exchange_rate()`: loads in exchange rate for a particular date from last 180 days
+   
+   7. `exchange_plot()`: produces plots given exchange rate for last 180 days
+
+This vignette aims to demonstrate a typical workflow of the `ST403FinalProject` package.
 
 
-### Installation
+### Installation 
 
 __ST403FinalProject__ will run in Windows, Mac OS X, or Linux. To install it you first need to install [R](https://cran.r-project.org/). Installing [RStudio](https://www.rstudio.com/) as a nice desktop environment for using R is also recommended.
 
@@ -101,3 +114,43 @@ plot_popr(model1)
 ```
 
 The output of the plot function - a nice plot.
+
+## `convertDist()`
+
+The `convertDist()` function will convert from a one unit of distance to another,
+with both the starting unit and ending unit being provided as parameters in 
+the function call.
+
+```{r, echo=FALSE}
+convertDist(200,"meter","centimeter")
+```
+
+## Exchange {.tabset}
+
+The exchange family of methods in this package aim to return exchange rates for given currencies and plot these exchange rates. 
+
+ 1.  Below is an example where USD is converted to GBP.
+
+```{r}
+100*exchange_rate("USD","GBP")
+100*exchange_rate("USD","GBP","2022-11-01")
+```
+  We see here at the time of writing 100$ equates to roughly 82.91£ but on the first of November was 86.93£. Note the date format yyyy-mm-dd and also be aware the data is only available for last 180 days.
+  
+  2.  If looking to see overall trend between two currencies we can use *exchange_plot*
+  
+```{r,fig.width=5.5,fig.height=4}
+exchange_plot("USD","GBP")
+```
+  
+   The lines indicate the min,median and max for the given exchange rate. The current exchange rate is also given in the title
+  
+  3.
+To access this data in the form of a data frame to do your own analysis use function *load_fx*
+
+```{r}
+df1<-load_fx(rates_list = c("EUR/USD","EUR/GBP","EUR/AUD","EUR/NZD"))
+df1<-df1[order(df1$Date,df1$rate,df1$Index,decreasing = T),]
+head(df1,n=8)
+```
+
