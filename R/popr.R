@@ -249,7 +249,7 @@ fit_popr <- function(continent = "World", year1, year2, popr = load_popr())
 #' @export
 #'
 #' @importFrom grDevices "colorRampPalette" "as.raster"
-#' @importFrom graphics "text" "rasterImage"
+#' @importFrom graphics "text" "rasterImage" "axis" "layout"
 #'
 #' @examples
 #' load_popr()
