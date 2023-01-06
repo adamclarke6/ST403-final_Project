@@ -1,8 +1,8 @@
 ---
-title: "popr"
+title: "vignetteFinal"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{popr}
+  %\VignetteIndexEntry{vignetteFinal}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -91,7 +91,7 @@ dat
 
 ## `fit_popr()`
 
-A dedicated `fit_popr()` method is provided for objects returned by `load_popr()`. This function will fit the model indicated by the `continent` argument to data at the intervals specified by the `year1` and `year2` arguments. In the example below, a  model is fit to the continent of Africa data for years 2022 and 2020. 
+A dedicated `fit_popr()` method is provided for objects returned by `load_popr()`. This function will fit the model indicated by the `continent` argument to data at the intervals specified by the `year1` and `year2` arguments. In the example below, a  model is fit to the continent of Africa data for years 2022 and 2020. Each of the  first three arguments must be a string. 
 
 ```{r}
 model1 <- fit_popr("Africa", "2022", "2020", popr = dat)
